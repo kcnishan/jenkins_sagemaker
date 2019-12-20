@@ -36,6 +36,6 @@ ENV PATH="/opt/program:${PATH}"
 # Set up the program in the image
 RUN echo "$PWD"
 RUN echo ${WORKDIR}
-COPY ./decision_trees /opt/program
+COPY decision_trees /opt/program
 WORKDIR /opt/program
 
