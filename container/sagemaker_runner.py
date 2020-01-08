@@ -5,4 +5,11 @@ from time import gmtime, strftime
 
 sess = sage.Session()
 
-print(sess)
+account = sess.boto_session.client('sts').get_caller_identity()['Account']
+region = sess.boto_session.region_name
+image = '{}.dkr.ecr.{}.amazonaws.com/sagemaker-decision-trees:latest'.format(account, region)
+
+print(account)
+print(region)
+print(image)
+
