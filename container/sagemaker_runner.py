@@ -1,6 +1,5 @@
 role = 'arn:aws:iam::084602632950:role/sagemaker-role'
-pref
-ix = 'DEMO-scikit-byo-iris'
+prefix = 'DEMO-scikit-byo-iris'
 import sagemaker as sage
 
 
