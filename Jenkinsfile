@@ -43,13 +43,16 @@ pipeline
                         {
                             docker.image(IMAGE).push()
                         }
+
+
+                        sh("export PATH=$PATH:/home/jenkins/.local/bin; pip install --user sagemaker")
+                        sh("export PATH=$PATH:/home/jenkins/.local/bin; pip install --user pathlib")
+                        sh("export PATH=$PATH:/home/jenkins/.local/bin;python container/sagemaker_runner.py")
                     }
 
                     // Push the Docker image to ECR
                 }
-                sh("export PATH=$PATH:/home/jenkins/.local/bin; pip install --user sagemaker")
-                sh("export PATH=$PATH:/home/jenkins/.local/bin; pip install --user pathlib")
-                sh("export PATH=$PATH:/home/jenkins/.local/bin;python container/sagemaker_runner.py")
+
             }
         }
     }
