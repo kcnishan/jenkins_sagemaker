@@ -1,7 +1,6 @@
 pipeline
 {
-    agent any
-    // agent { label 'linux' }
+    agent { label 'linux' }
     environment
     {
         IMAGE = 'sagemaker-decision-trees'
