@@ -34,6 +34,7 @@ pipeline
                     sh("wget https://bootstrap.pypa.io/get-pip.py --no-check-certificate")
                     sh("python get-pip.py --user")
                     sh('export PATH=$PATH:/home/jenkins/.local/bin')
+                    sh('export PATH=$PATH:/home/jenkins/.local/bin;  pip install --user --upgrade setuptools')
                     sh("export PATH=$PATH:/home/jenkins/.local/bin; pip install --user awscli")
 
                     withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'AWS_CREDENTIALS', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
