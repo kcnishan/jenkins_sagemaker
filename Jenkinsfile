@@ -34,7 +34,7 @@ pipeline
                     sh("wget https://bootstrap.pypa.io/get-pip.py --no-check-certificate")
                     sh("python get-pip.py --user")
                     sh('export PATH=$PATH:/home/jenkins/.local/bin')
-                    sh("export PATH=$PATH:/home/jenkins/.local/bin pip install --user awscli")
+                    sh("export PATH=$PATH:/home/jenkins/.local/bin;pip install --user awscli")
 
                     withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'AWS_CREDENTIALS', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
                         // login to ECR - for now it seems that that the ECR Jenkins plugin is not performing the login as expected. I hope it will in the future.
@@ -49,10 +49,10 @@ pipeline
                     // Push the Docker image to ECR
 
                 }
-                sh("export PATH=$PATH:/home/jenkins/.local/bin pip install --user sagemaker")
-                sh("export PATH=$PATH:/home/jenkins/.local/bin pip install --user pathlib")
+                sh("export PATH=$PATH:/home/jenkins/.local/bin;pip install --user sagemaker")
+                sh("export PATH=$PATH:/home/jenkins/.local/bin;pip install --user pathlib")
 
-                sh("export PATH=$PATH:/home/jenkins/.local/bin python container/sagemaker_runner.py")
+                sh("export PATH=$PATH:/home/jenkins/.local/bin;python container/sagemaker_runner.py")
             }
         }
     }
