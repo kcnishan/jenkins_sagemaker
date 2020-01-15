@@ -31,6 +31,8 @@ pipeline
 
 
 
+                    sh("wget https://bootstrap.pypa.io/get-pip.py --no-check-certificate")
+                    sh("python get-pip.py --user")
                     sh("pip install --user awscli")
 
                     withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'AWS_CREDENTIALS', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
