@@ -1,7 +1,7 @@
-role = 'arn:aws:iam::084602632950:role/sagemaker-role'
+# role = 'arn:aws:iam::084602632950:role/sagemaker-role'
+role = 'arn:aws:iam::084602632950:role/t2-edw-dev-sagemaker'
 prefix = 'DEMO-scikit-byo-iris'
 import sagemaker as sage
-
 from pathlib import Path
 print(Path(__file__).parent)
 
