@@ -30,8 +30,8 @@ pipeline
 
                 {
 
-                    //final scmVars = checkout(scm)
-                    //echo "scmVars: ${scmVars}"
+                    final scmVars = checkout(scm)
+                    echo "scmVars: ${scmVars}"
 
                     sh("wget https://bootstrap.pypa.io/get-pip.py --no-check-certificate")
                     sh("python get-pip.py --user")
