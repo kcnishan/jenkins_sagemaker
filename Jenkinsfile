@@ -32,6 +32,9 @@ pipeline
 
                     final scmVars = checkout(scm)
                     echo "scmVars: ${scmVars}"
+                    echo "scmVars: ${scmVars.GIT_BRANCH}"
+                    echo "scmVars: ${scmVars.GIT_COMMIT}"
+
 
                     sh("wget https://bootstrap.pypa.io/get-pip.py --no-check-certificate")
                     sh("python get-pip.py --user")
