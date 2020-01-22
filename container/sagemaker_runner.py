@@ -2,7 +2,7 @@
 role = 'arn:aws:iam::084602632950:role/t2-edw-dev-sagemaker'
 prefix = 'DEMO-scikit-byo-iris'
 bucket = 't2-edw-dev-sagemaker'
-import sagemaker as sage''
+import sagemaker as sage
 from pathlib import Path
 print(Path(__file__).parent)
 import sys
