@@ -25,7 +25,7 @@ print(image)
 print(sys.argv)
 tree = sage.estimator.Estimator(image,
                        role, 1, 'ml.c4.2xlarge',
-                       output_path="s3://{}/{}/{}/output".format(bucket, sys.argv[1], sys.argv[2]), sagemaker_session=sess)
+                       output_path="s3://{}/{}/{}/output".format(bucket, sys.argv[2], sys.argv[1]), sagemaker_session=sess)
 
 tree.fit(data_location, wait=False, logs="All")
 
