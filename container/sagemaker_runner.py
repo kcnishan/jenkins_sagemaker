@@ -4,6 +4,7 @@ prefix = 'DEMO-scikit-byo-iris'
 import sagemaker as sage
 from pathlib import Path
 print(Path(__file__).parent)
+import sys
 
 sess = sage.Session()
 
@@ -19,6 +20,8 @@ print(account)
 print(region)
 print(image)
 
+
+print(sys.argv)
 tree = sage.estimator.Estimator(image,
                        role, 1, 'ml.c4.2xlarge',
                        output_path="s3://{}/output".format(sess.default_bucket()),
