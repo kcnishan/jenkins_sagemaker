@@ -1,7 +1,8 @@
 # role = 'arn:aws:iam::084602632950:role/sagemaker-role'
 role = 'arn:aws:iam::084602632950:role/t2-edw-dev-sagemaker'
 prefix = 'DEMO-scikit-byo-iris'
-import sagemaker as sage
+bucket = 't2-edw-dev-sagemaker
+import sagemaker as sage''
 from pathlib import Path
 print(Path(__file__).parent)
 import sys
@@ -24,8 +25,7 @@ print(image)
 print(sys.argv)
 tree = sage.estimator.Estimator(image,
                        role, 1, 'ml.c4.2xlarge',
-                       output_path="s3://{}/output".format(sess.default_bucket()),
-                       sagemaker_session=sess)
+                       output_path="s3://{}/{}/{}/output".format(bucket, sys.argv[1], sys.argv[2]), sagemaker_session=sess)
 
 tree.fit(data_location, wait=False, logs="All")
 
