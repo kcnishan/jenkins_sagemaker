@@ -33,7 +33,7 @@ tree = sage.estimator.Estimator(image,
                        role, 1, 'ml.c4.2xlarge',
                        output_path= model_output_path, sagemaker_session=sess)
 
-tree.fit(data_location, wait=False, logs="All")
+tree.fit(data_location, wait=True, logs="All")
 
 
 
