@@ -52,10 +52,9 @@ pipeline
                             docker.image(IMAGE).push()
                         }
 
-
                         sh("export PATH=$PATH:/home/jenkins/.local/bin; pip install --user sagemaker")
                         sh("export PATH=$PATH:/home/jenkins/.local/bin; pip install --user pathlib")
-                        sh("export PATH=$PATH:/home/jenkins/.local/bin;python container/sagemaker_runner.py")
+                        sh("export PATH=$PATH:/home/jenkins/.local/bin;python container/sagemaker_runner.py ${scmVars.GIT_COMMIT} ${scmVars.GIT_BRANCH}")
 
                     }
 
