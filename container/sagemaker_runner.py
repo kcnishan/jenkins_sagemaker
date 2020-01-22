@@ -24,14 +24,30 @@ print(image)
 
 
 print(sys.argv)
+
+
+model_output_path = "s3://{}/{}/{}/{}/".format(bucket, project, sys.argv[2], sys.argv[1])
+
+
 tree = sage.estimator.Estimator(image,
                        role, 1, 'ml.c4.2xlarge',
-                       output_path="s3://{}/{}/{}/{}/".format(bucket, project, sys.argv[2], sys.argv[1]), sagemaker_session=sess)
+                       output_path= model_output_path, sagemaker_session=sess)
 
 tree.fit(data_location, wait=False, logs="All")
 
 
 
+transform_output_folder = "batch-transform-output"
 
+
+transformer = tree.transformer(instance_count=1,
+                               instance_type='ml.m4.xlarge',
+                               output_path=model_output_path,
+                               assemble_with='Line',
+                               accept='text/csv')
+
+
+transformer.transform(data_location, content_type='text/csv', split_type='Line', input_filter='$[1:]')
+transformer.wait()
 
 
