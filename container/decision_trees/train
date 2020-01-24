@@ -60,8 +60,8 @@ def train():
         clf = tree.DecisionTreeClassifier(max_leaf_nodes=max_leaf_nodes)
         clf = clf.fit(train_X, train_y)
 
-        print('Train_error=39487345')
-        print('Valid_error=34o58375')
+        print('Train_error= 39487345')
+        print('Valid_error= 8977')
 
 
 
