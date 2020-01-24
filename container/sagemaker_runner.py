@@ -58,5 +58,5 @@ transformer = tree.transformer(instance_count=1,
                                assemble_with='Line',
                                accept='text/csv')
 
-transformer.transform(data_location, content_type='text/csv', split_type='Line', input_filter='$[1:]')
+transformer.transform(data_location + '/iris.csv', content_type='text/csv', split_type='Line', input_filter='$[1:]')
 transformer.wait()
