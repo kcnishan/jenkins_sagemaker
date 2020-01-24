@@ -15,8 +15,8 @@ sess = sage.Session(default_bucket=bucket)
 
 WORK_DIRECTORY = str(Path(__file__).parent.parent) + '/data'
 
-key_prefix = "{}/{}/{}/{}".format(project, sys.argv[2], sys.argv[1])
-data_location = sess.upload_data(WORK_DIRECTORY, key_prefix=key_prefix )
+key_prefix = "{}/{}/{}".format(project, sys.argv[2], sys.argv[1])
+data_location = sess.upload_data(WORK_DIRECTORY, key_prefix=key_prefix)
 
 account = sess.boto_session.client('sts').get_caller_identity()['Account']
 region = sess.boto_session.region_name
