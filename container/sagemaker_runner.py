@@ -11,6 +11,7 @@ import sys
 
 sess = sage.Session()
 
+
 WORK_DIRECTORY = str(Path(__file__).parent.parent) + '/data'
 data_location = sess.upload_data(WORK_DIRECTORY, key_prefix=prefix)
 
