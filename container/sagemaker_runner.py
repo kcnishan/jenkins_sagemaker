@@ -11,7 +11,7 @@ import sys
 import logging
 
 log = logging.getLogger()
-root.setLevel(logging.INFO)
+
 
 out_hdlr = logging.StreamHandler(sys.stdout)
 out_hdlr.setLevel(logging.INFO)
