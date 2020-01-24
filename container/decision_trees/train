@@ -60,16 +60,11 @@ def train():
         clf = tree.DecisionTreeClassifier(max_leaf_nodes=max_leaf_nodes)
         clf = clf.fit(train_X, train_y)
 
-        import logging
-
-        log = logging.getLogger()
-        out_hdlr = logging.StreamHandler(sys.stdout)
-        out_hdlr.setLevel(logging.INFO)
-        log.addHandler(out_hdlr)
-        log.setLevel(logging.INFO)
+        print('Train_error=39487345')
+        print('Valid_error=34o58375')
 
 
-        log.info("train:error 345345")
+
 
         # save the model
         with open(os.path.join(model_path, 'decision-tree-model.pkl'), 'w') as out:
