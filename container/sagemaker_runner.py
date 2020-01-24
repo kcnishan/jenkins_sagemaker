@@ -46,7 +46,7 @@ tree = sage.estimator.Estimator(image,
 
 
 print(data_location)
-tree.fit(data_location + 'iris.csv', wait=True, logs="All")
+tree.fit(data_location + '/iris.csv', wait=True, logs="All")
 
 print('start transformer')
 
