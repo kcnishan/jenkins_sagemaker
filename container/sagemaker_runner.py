@@ -8,9 +8,20 @@ from pathlib import Path
 
 print(Path(__file__).parent)
 import sys
+import logging
+
+log = logging.getLogger()
+root.setLevel(logging.INFO)
+
+out_hdlr = logging.StreamHandler(sys.stdout)
+out_hdlr.setLevel(logging.INFO)
+log.addHandler(out_hdlr)
+log.setLevel(logging.INFO)
 
 sess = sage.Session()
 
+
+log.info("test123")
 
 WORK_DIRECTORY = str(Path(__file__).parent.parent) + '/data'
 data_location = sess.upload_data(WORK_DIRECTORY, key_prefix=prefix)
