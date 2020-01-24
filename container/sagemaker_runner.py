@@ -12,11 +12,14 @@ import sys
 
 sess = sage.Session(default_bucket=bucket)
 
+print(sess.default_bucket())
 
 WORK_DIRECTORY = str(Path(__file__).parent.parent) + '/data'
 
 #key_prefix = "{}".format(project)
-data_location = sess.upload_data(WORK_DIRECTORY, key_prefix=project)
+data_location = sess.upload_data(bucket=bucket, path=WORK_DIRECTORY, key_prefix=project)
+
+
 
 account = sess.boto_session.client('sts').get_caller_identity()['Account']
 region = sess.boto_session.region_name
@@ -41,6 +44,8 @@ tree = sage.estimator.Estimator(image,
                                 ]
                                 )
 
+
+print(data_location)
 tree.fit(data_location, wait=True, logs="All")
 
 print('start transformer')
