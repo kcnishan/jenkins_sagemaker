@@ -34,8 +34,10 @@ pipeline
                     echo "scmVars: ${scmVars}"
                     echo "scmVars: ${scmVars.GIT_BRANCH}"
                     echo "scmVars: ${scmVars.GIT_COMMIT}"
+
                     shortCommit = sh(returnStdout: true, script: "git log -n 1 --pretty=format:'%h'").trim()
                     echo shortCommit
+
                     sh("wget https://bootstrap.pypa.io/get-pip.py --no-check-certificate")
                     sh("python get-pip.py --user")
                     sh('export PATH=$PATH:/home/jenkins/.local/bin')
@@ -52,6 +54,7 @@ pipeline
                             docker.image(IMAGE).push()
                         }
 
+                        sh("export PATH=$PATH:/home/jenkins/.local/bin; pip install --user pandas")
                         sh("export PATH=$PATH:/home/jenkins/.local/bin; pip install --user sagemaker")
                         sh("export PATH=$PATH:/home/jenkins/.local/bin; pip install --user pathlib")
                         sh("export PATH=$PATH:/home/jenkins/.local/bin;python container/sagemaker_runner.py ${scmVars.GIT_COMMIT} ${scmVars.GIT_BRANCH}")
