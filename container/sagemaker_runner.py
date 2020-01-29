@@ -36,7 +36,6 @@ transformer_output_path = "s3://{}/{}/{}/{}/transformer".format(bucket, project,
 
 tree = sage.estimator.Estimator(image,
                                 role, 1, 'ml.c4.2xlarge',
-                                output_path=model_output_path,
                                 sagemaker_session=sess,
                                 enable_sagemaker_metrics=True,
                                 metric_definitions=[
