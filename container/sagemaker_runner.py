@@ -16,8 +16,7 @@ print(sess.default_bucket())
 
 WORK_DIRECTORY = str(Path(__file__).parent.parent) + '/data'
 
-path = "{}/{}/{}".format( project, sys.argv[2], sys.argv[1])
-#key_prefix = "{}".format(project)
+data_path = "{}/{}/{}".format(project, sys.argv[2], sys.argv[1])
 data_location = sess.upload_data(bucket=bucket, path=WORK_DIRECTORY, key_prefix=path)
 
 
@@ -32,7 +31,8 @@ print(image)
 
 print(sys.argv)
 
-model_output_path = "s3://{}/{}/{}/{}/".format(bucket, project, sys.argv[2], sys.argv[1])
+model_output_path = "s3://{}/{}/{}/{}/model".format(bucket, project, sys.argv[2], sys.argv[1])
+transformer_output_path = "s3://{}/{}/{}/{}/transformer".format(bucket, project, sys.argv[2], sys.argv[1])
 
 tree = sage.estimator.Estimator(image,
                                 role, 1, 'ml.c4.2xlarge',
@@ -55,7 +55,7 @@ transform_output_folder = "batch-transform-output"
 
 transformer = tree.transformer(instance_count=1,
                                instance_type='ml.m4.xlarge',
-                               output_path=model_output_path,
+                               output_path=transformer_output_path,
                                assemble_with='Line',
                                accept='text/csv')
 
