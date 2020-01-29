@@ -63,7 +63,7 @@ def train():
         print('Train_error= 39487345')
         print('Valid_error= 8977')
         with open(os.path.join(output_path, 'mod'), 'w') as s:
-            s.write(clf)
+            s.write("test")
 
 
 
