@@ -62,6 +62,7 @@ def train():
 
         print('Train_error= 39487345')
         print('Valid_error= 8977')
+        
 
         # print(output_path)
         # with open(os.path.join(model_path, 'test.text'), 'w') as s:
