@@ -64,8 +64,7 @@ def train():
         print('Valid_error= 8977')
 
         print(output_path)
-        with open(os.path.join(output_path, 'failure'), 'w') as s:
-            print('test')
+        with open(os.path.join(output_path, 'test'), 'w') as s:
             s.write("test")
 
 
