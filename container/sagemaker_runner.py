@@ -17,7 +17,7 @@ print(sess.default_bucket())
 WORK_DIRECTORY = str(Path(__file__).parent.parent) + '/data'
 
 data_path = "{}/{}/{}".format(project, sys.argv[2], sys.argv[1])
-data_location = sess.upload_data(bucket=bucket, path=WORK_DIRECTORY, key_prefix=path)
+data_location = sess.upload_data(bucket=bucket, path=WORK_DIRECTORY, key_prefix=data_path)
 
 
 
