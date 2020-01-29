@@ -70,7 +70,6 @@ def train():
         #     s.write("test")
 
 
-
         # save the model
         with open(os.path.join(model_path, 'decision-tree-model.pkl'), 'w') as out:
             pickle.dump(clf, out)
