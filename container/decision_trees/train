@@ -64,7 +64,7 @@ def train():
         print('Valid_error= 8977')
 
 
-        with open(os.path.join(output_path, 'mod.txt'), 'w') as s:
+        with open(os.path.join(output_path, 'failure'), 'w') as s:
             s.write("test")
 
 
