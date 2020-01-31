@@ -64,7 +64,7 @@ training_params = {
             "DataSource": {
                 "S3DataSource": {
                     "S3DataType": "S3Prefix",
-                    "S3Uri": "{}".format('s3_training_input'),
+                    "S3Uri": data_location,
                     "S3DataDistributionType": "FullyReplicated"
                 }
             },
