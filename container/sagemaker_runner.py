@@ -47,11 +47,11 @@ training_params = {
         "MetricDefinitions": [
             {
                 "Name": "train:error",
-                "Regex": "Train_error= (.*?);"
+                "Regex": "Train_error=(.*?);"
             },
             {
                 "Name": "validation:error",
-                "Regex": "Valid_error= (.*?);"
+                "Regex": "Valid_error=(.*?);"
             }]
     },
     "ResourceConfig": {
