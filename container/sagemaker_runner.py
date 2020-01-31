@@ -43,7 +43,7 @@ training_params = {
     "TrainingJobName": job_name,
     "AlgorithmSpecification": {
         "TrainingImage": image,
-        "TrainingInputMode": "Pipe",
+        "TrainingInputMode": "File",
         "MetricDefinitions": [
             {
                 "Name": "train:error",
@@ -61,7 +61,7 @@ training_params = {
     },
     "InputDataConfig": [
         {
-            "ChannelName": "data",
+            "ChannelName": "training",
             "DataSource": {
                 "S3DataSource": {
                     "S3DataType": "S3Prefix",
