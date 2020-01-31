@@ -21,6 +21,7 @@ WORK_DIRECTORY = str(Path(__file__).parent.parent) + '/data'
 data_path = "{}/{}/{}".format(project, sys.argv[2], sys.argv[1])
 data_location = sess.upload_data(bucket=bucket, path=WORK_DIRECTORY, key_prefix=data_path)
 
+print(data_location)
 account = sess.boto_session.client('sts').get_caller_identity()['Account']
 region = sess.boto_session.region_name
 image = '{}.dkr.ecr.{}.amazonaws.com/{}:latest'.format(account, region, project)
@@ -60,7 +61,7 @@ training_params = {
     },
     "InputDataConfig": [
         {
-            "ChannelName": "training",
+            "ChannelName": "data",
             "DataSource": {
                 "S3DataSource": {
                     "S3DataType": "S3Prefix",
