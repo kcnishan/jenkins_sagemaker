@@ -86,7 +86,7 @@ sm.create_training_job(**training_params)
 
 status = sm.describe_training_job(TrainingJobName=job_name)['TrainingJobStatus']
 print(status)
-sm_session.logs_for_job(job_name=pipe_job, wait=True)
+sm_session.logs_for_job(job_name=job_name, wait=True)
 sm.get_waiter('training_job_completed_or_stopped').wait(TrainingJobName=job_name)
 status = sm.describe_training_job(TrainingJobName=job_name)['TrainingJobStatus']
 print("Training job ended with status: " + status)
