@@ -13,6 +13,7 @@ import sys
 
 sess = sage.Session(default_bucket=bucket)
 
+
 print(sess.default_bucket())
 
 WORK_DIRECTORY = str(Path(__file__).parent.parent) + '/data'
