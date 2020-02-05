@@ -147,7 +147,7 @@ transform_request = \
     }
 }
 
-sm.create_transform_job(**request)
+sm.create_transform_job(**transform_request)
 
 while (True):
     response = sm.describe_transform_job(TransformJobName=batch_job_name)
