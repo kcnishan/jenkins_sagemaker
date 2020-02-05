@@ -7,13 +7,13 @@ import sagemaker as sage
 from pathlib import Path
 from sagemaker.session import Session
 import time
-#import boto3
+
+# import boto3
 
 print(Path(__file__).parent)
 import sys
 
 sess = sage.Session(default_bucket=bucket)
-
 
 print(sess.default_bucket())
 
@@ -82,7 +82,6 @@ training_params = {
     }
 }
 
-
 sm_session = Session()
 sm = sm_session.boto_session.client('sagemaker')
 sm.create_training_job(**training_params)
@@ -98,9 +97,6 @@ if status == 'Failed':
     print('Training failed with the following error: {}'.format(message))
     raise Exception('Training job failed')
 
-
-
-
 model_name = job_name + '-mod'
 
 info = sm.describe_training_job(TrainingJobName=job_name)
@@ -113,42 +109,40 @@ primary_container = {
 }
 
 create_model_response = sm.create_model(
-    ModelName = model_name,
-    ExecutionRoleArn = role,
-    PrimaryContainer = primary_container)
+    ModelName=model_name,
+    ExecutionRoleArn=role,
+    PrimaryContainer=primary_container)
 
 print(create_model_response['ModelArn'])
 
-
-
 batch_job_name = job_name + '-transform'
 transform_request = \
-{
-    "TransformJobName": batch_job_name,
-    "ModelName": model_name,
-    "BatchStrategy": "MultiRecord",
-    "TransformOutput": {
-        "S3OutputPath": model_output_path
-    },
-    "TransformInput": {
-        "DataSource": {
-            "S3DataSource": {
-                "S3DataType": "S3Prefix",
-                "S3Uri": data_location
-            }
+    {
+        "TransformJobName": batch_job_name,
+        "ModelName": model_name,
+        "BatchStrategy": "MultiRecord",
+        "TransformOutput": {
+            "S3OutputPath": model_output_path
         },
-        "ContentType": "text/csv",
-        "SplitType": "Line",
-        "CompressionType": "None",
-        "InputFilter": "$[1:]"
-    },
-    "TransformResources": {
+        "TransformInput": {
+            "DataSource": {
+                "S3DataSource": {
+                    "S3DataType": "S3Prefix",
+                    "S3Uri": data_location
+                }
+            },
+            "DataProcessing": {
+                "InputFilter": "$[1:]"
+            },
+            "ContentType": "text/csv",
+            "SplitType": "Line",
+            "CompressionType": "None"
+        },
+        "TransformResources": {
             "InstanceType": "ml.m4.xlarge",
             "InstanceCount": 1
+        }
     }
-}
-
-
 
 sm.create_transform_job(**transform_request)
 
