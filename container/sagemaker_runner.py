@@ -131,7 +131,7 @@ transform_request = \
             "DataSource": {
                 "S3DataSource": {
                     "S3DataType": "S3Prefix",
-                    "S3Uri": data_location
+                    "S3Uri": data_location + '/iris.csv'
                 }
             },
             "ContentType": "text/csv",
