@@ -97,6 +97,27 @@ if status == 'Failed':
     print('Training failed with the following error: {}'.format(message))
     raise Exception('Training job failed')
 
+
+
+
+model_name = job_name + '-mod'
+
+info = sm.describe_training_job(TrainingJobName=job_name)
+model_data = info['ModelArtifacts']['S3ModelArtifacts']
+print(model_data)
+
+primary_container = {
+    'Image': image,
+    'ModelDataUrl': model_data
+}
+
+create_model_response = sm.create_model(
+    ModelName = model_name,
+    ExecutionRoleArn = role,
+    PrimaryContainer = primary_container)
+
+print(create_model_response['ModelArn'])
+
 # sm = sess
 # sm.create_training_job(**training_params)
 #
