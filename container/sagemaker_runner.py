@@ -6,6 +6,7 @@ project = 'sagemaker-decision-trees'
 import sagemaker as sage
 from pathlib import Path
 from sagemaker.session import Session
+import time
 #import boto3
 
 print(Path(__file__).parent)
@@ -117,6 +118,49 @@ create_model_response = sm.create_model(
     PrimaryContainer = primary_container)
 
 print(create_model_response['ModelArn'])
+
+
+
+batch_job_name = job_name + '-transform'
+transform_request = \
+{
+    "TransformJobName": batch_job_name,
+    "ModelName": model_name,
+    "BatchStrategy": "MultiRecord",
+    "TransformOutput": {
+        "S3OutputPath": model_output_path
+    },
+    "TransformInput": {
+        "DataSource": {
+            "S3DataSource": {
+                "S3DataType": "S3Prefix",
+                "S3Uri": data_location
+            }
+        },
+        "ContentType": "text/csv",
+        "SplitType": "Line",
+        "CompressionType": "None"
+    },
+    "TransformResources": {
+            "InstanceType": "ml.m4.xlarge",
+            "InstanceCount": 1
+    }
+}
+
+sm.create_transform_job(**request)
+
+while (True):
+    response = sm.describe_transform_job(TransformJobName=batch_job_name)
+    status = response['TransformJobStatus']
+    if status == 'Completed':
+        print("Transform job ended with status: " + status)
+        break
+    if status == 'Failed':
+        message = response['FailureReason']
+        print('Transform failed with the following error: {}'.format(message))
+        raise Exception('Transform job failed')
+    print("Transform job is still in status: " + status)
+    time.sleep(30)
 
 # sm = sess
 # sm.create_training_job(**training_params)
