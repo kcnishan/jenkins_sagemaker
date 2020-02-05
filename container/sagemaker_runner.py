@@ -124,15 +124,15 @@ transform_request = \
         "TransformOutput": {
             "S3OutputPath": model_output_path
         },
+        "DataProcessing": {
+            "InputFilter": "$[1:]"
+        },
         "TransformInput": {
             "DataSource": {
                 "S3DataSource": {
                     "S3DataType": "S3Prefix",
                     "S3Uri": data_location
                 }
-            },
-            "DataProcessing": {
-                "InputFilter": "$[1:]"
             },
             "ContentType": "text/csv",
             "SplitType": "Line",
