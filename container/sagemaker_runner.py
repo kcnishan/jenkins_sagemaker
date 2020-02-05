@@ -139,7 +139,8 @@ transform_request = \
         },
         "ContentType": "text/csv",
         "SplitType": "Line",
-        "CompressionType": "None"
+        "CompressionType": "None",
+        "InputFilter": "$[1:]"
     },
     "TransformResources": {
             "InstanceType": "ml.m4.xlarge",
