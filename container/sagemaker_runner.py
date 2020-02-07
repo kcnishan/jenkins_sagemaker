@@ -3,7 +3,8 @@
 
 role = 'arn:aws:iam::317631987873:role/t2-netapp-edw-dev-sagemaker'
 prefix = 'DEMO-scikit-byo-iris'
-bucket = 't2-edw-dev-sagemaker'
+#bucket = 't2-edw-dev-sagemaker'
+bucket = 't2-netapp-edw-dev-sagemaker'
 project = 'sagemaker-decision-trees'
 import sagemaker as sage
 from pathlib import Path
