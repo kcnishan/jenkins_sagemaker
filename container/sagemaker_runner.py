@@ -5,7 +5,9 @@ role = 'arn:aws:iam::317631987873:role/t2-netapp-edw-dev-sagemaker'
 prefix = 'DEMO-scikit-byo-iris'
 #bucket = 't2-edw-dev-sagemaker'
 bucket = 't2-netapp-edw-dev-sagemaker'
-project = 'sagemaker-decision-trees'
+
+project = 't2-netapp-edw-dev-sagemaker-decision-trees'
+# project = 'sagemaker-decision-trees'
 import sagemaker as sage
 from pathlib import Path
 from sagemaker.session import Session
@@ -24,6 +26,7 @@ WORK_DIRECTORY = str(Path(__file__).parent.parent) + '/data'
 
 data_path = "{}/{}/{}".format(project, sys.argv[2], sys.argv[1])
 data_location = sess.upload_data(bucket=bucket, path=WORK_DIRECTORY, key_prefix=data_path)
+
 
 print(data_location)
 account = sess.boto_session.client('sts').get_caller_identity()['Account']
