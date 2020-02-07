@@ -66,8 +66,8 @@ def train():
 
 
         # print(output_path)
-        with open(os.path.join(output_path, 'test.text'), 'w') as s:
-            s.write("test")
+        #with open(os.path.join(output_path, 'test.text'), 'w') as s:
+           # s.write("test")
 
 
         # save the model
