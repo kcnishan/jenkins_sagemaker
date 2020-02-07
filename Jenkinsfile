@@ -4,8 +4,8 @@ pipeline
     agent { label 'linux' }
     environment
     {
-        IMAGE = 'sagemaker-decision-trees'
-        ECRURL = 'https://317631987873.dkr.ecr.us-west-2.amazonaws.com/t2-netapp-edw-dev-sagemaker'
+        IMAGE = 't2-netapp-edw-dev-sagemaker-decision-trees'
+        ECRURL = 'https://317631987873.dkr.ecr.us-west-2.amazonaws.com/t2-netapp-edw-dev-sagemaker-decision-trees'
         ECRCRED = 'AWS'
 
     }
