@@ -1,7 +1,7 @@
 #role = 'arn:aws:iam::084602632950:role/sagemaker-role'
 #role = 'arn:aws:iam::084602632950:role/t2-edw-dev-sagemaker'
 
-role = 'arn:aws:iam::317631987873:role/t2-netapp-edw-dev-sagemaker'
+role = 'arn:aws:iam::317631987873:role/t2-entapps-edw-dev-sagemaker'
 prefix = 'DEMO-scikit-byo-iris'
 #bucket = 't2-edw-dev-sagemaker'
 bucket = 't2-entapps-edw-dev-sagemaker'
