@@ -1,10 +1,10 @@
-# role = 'arn:aws:iam::084602632950:role/sagemaker-role'
+#role = 'arn:aws:iam::084602632950:role/sagemaker-role'
 #role = 'arn:aws:iam::084602632950:role/t2-edw-dev-sagemaker'
 
 role = 'arn:aws:iam::317631987873:role/t2-netapp-edw-dev-sagemaker'
 prefix = 'DEMO-scikit-byo-iris'
 #bucket = 't2-edw-dev-sagemaker'
-bucket = 't2-netapp-edw-dev-sagemaker'
+bucket = 't2-entapps-edw-dev-sagemaker'
 
 project = 't2-netapp-edw-dev-sagemaker-decision-trees'
 # project = 'sagemaker-decision-trees'
@@ -165,44 +165,4 @@ while (True):
     print("Transform job is still in status: " + status)
     time.sleep(30)
 
-# sm = sess
-# sm.create_training_job(**training_params)
 #
-# status = sm.describe_training_job(TrainingJobName=job_name)['TrainingJobStatus']
-# print(status)
-# sm_session.logs_for_job(job_name=pipe_job, wait=True)
-# sm.get_waiter('training_job_completed_or_stopped').wait(TrainingJobName=job_name)
-# status = sm.describe_training_job(TrainingJobName=job_name)['TrainingJobStatus']
-# print("Training job ended with status: " + status)
-# if status == 'Failed':
-#     message = sm.describe_training_job(TrainingJobName=job_name)['FailureReason']
-#     print('Training failed with the following error: {}'.format(message))
-#     raise Exception('Training job failed')
-
-# tree = sage.estimator.Estimator(image,
-#                                 role, 1, 'ml.c4.2xlarge',
-#                                 output_path=model_output_path,
-#                                 sagemaker_session=sess,
-#                                 enable_sagemaker_metrics=True,
-#                                 metric_definitions=[
-#                                     {'Name': 'train:error', 'Regex': 'Train_error=(.*?);'},
-#                                     {'Name': 'validation:error', 'Regex': 'Valid_error=(.*?);'}
-#                                 ]
-#                                 )
-#
-#
-# print(data_location)
-# tree.fit(data_location + '/iris.csv', wait=True, logs="All")
-#
-# print('start transformer')
-#
-# transform_output_folder = "batch-transform-output"
-#
-# transformer = tree.transformer(instance_count=1,
-#                                instance_type='ml.m4.xlarge',
-#                                output_path=model_output_path,
-#                                assemble_with='Line',
-#                                accept='text/csv')
-#
-# transformer.transform(data_location + '/iris.csv', content_type='text/csv', split_type='Line', input_filter='$[1:]')
-# transformer.wait()
