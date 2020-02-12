@@ -6,7 +6,7 @@ prefix = 'DEMO-scikit-byo-iris'
 #bucket = 't2-edw-dev-sagemaker'
 bucket = 't2-entapps-edw-dev-sagemaker'
 
-project = 't2-netapp-edw-dev-sagemaker-decision-trees'
+project = 't2-entapps-edw-dev-sagemaker-decision-trees'
 # project = 'sagemaker-decision-trees'
 import sagemaker as sage
 from pathlib import Path
