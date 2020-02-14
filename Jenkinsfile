@@ -47,6 +47,9 @@ pipeline
 
                     withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'AWS_CREDENTIALS', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]) {
                         // login to ECR - for now it seems that that the ECR Jenkins plugin is not performing the login as expected. I hope it will in the future.
+                         echo AWS_ACCESS_KEY_ID
+                         echo AWS_SECRET_ACCESS_KEY
+
                         sh("export PATH=$PATH:/home/jenkins/.local/bin; aws configure set region us-west-2")
                         sh("export PATH=$PATH:/home/jenkins/.local/bin; eval \$(aws ecr get-login --no-include-email | sed 's|https://||')")
 
