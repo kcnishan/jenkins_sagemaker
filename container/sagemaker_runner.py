@@ -43,6 +43,7 @@ model_output_path = "s3://{}/{}/{}/{}".format(bucket, project, sys.argv[2], sys.
 # transformer_output_path = "s3://{}/{}/{}/{}".format
 
 
+
 job_name = "{}-{}".format(sys.argv[2], sys.argv[1])
 
 training_params = {
