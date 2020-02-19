@@ -28,6 +28,8 @@ param_path = os.path.join(prefix, 'input/config/hyperparameters.json')
 channel_name='training'
 training_path = os.path.join(input_path, channel_name)
 
+print(sys.argv)
+
 # The function to execute the training.
 def train():
     print('Starting the training.')
@@ -66,8 +68,8 @@ def train():
 
 
         # print(output_path)
-        #with open(os.path.join(output_path, 'test.text'), 'w') as s:
-           # s.write("test")
+        with open(os.path.join(model_path, 'test.text'), 'w') as s:
+            s.write("test")
 
 
         # save the model
