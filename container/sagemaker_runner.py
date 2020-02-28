@@ -122,6 +122,7 @@ create_model_response = sm.create_model(
 
 print(create_model_response['ModelArn'])
 
+
 batch_job_name = job_name + '-transform'
 transform_request = \
     {
