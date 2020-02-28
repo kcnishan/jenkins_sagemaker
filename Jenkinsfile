@@ -8,6 +8,7 @@ pipeline
         ECRURL = 'https://317631987873.dkr.ecr.us-west-2.amazonaws.com/t2-entapps-edw-dev-sagemaker-decision-trees'
         ECRCRED = 'AWS'
 
+
     }
     stages
     {
